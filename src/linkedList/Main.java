@@ -23,9 +23,13 @@ public class Main {
 
 		System.out.println(Arrays.toString(list.toArray()));
 
-		list.deleteNode(10);
+//		list.deleteNode(10);
 
-		System.out.println(Arrays.toString(list.toArray()));
+//		System.out.println(Arrays.toString(list.toArray()));
+
+		list.createCycle(4);
+
+		System.out.println(list.hasCycle());
 	}
 
 }

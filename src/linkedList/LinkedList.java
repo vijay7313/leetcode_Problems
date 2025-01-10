@@ -104,6 +104,44 @@ public class LinkedList {
 		size--;
 	}
 
+	public void createCycle(int position) {
+
+		if (position < 0 || size <= position)
+			return;
+
+		Node positionNode = head;
+		int i = 0;
+		while (i++ < position)
+			positionNode = positionNode.next;
+
+		Node current = head;
+
+		while (current != null)
+			if (current.next == null)
+				break;
+			else
+				current = current.next;
+
+		current.next = positionNode;
+	}
+
+	public boolean hasCycle() {
+
+		Node slower = head;
+		Node faster = head;
+
+		while (faster != null) {
+			if (faster.next == null)
+				break;
+			slower = slower.next;
+			faster = faster.next.next;
+			if (slower == faster)
+				return true;
+		}
+		return false;
+
+	}
+
 	public Node reverse() {
 
 		if (isEmpty())
