@@ -114,15 +114,8 @@ public class LinkedList {
 		while (i++ < position)
 			positionNode = positionNode.next;
 
-		Node current = head;
+		previousOfLastNode(head).next = positionNode;
 
-		while (current != null)
-			if (current.next == null)
-				break;
-			else
-				current = current.next;
-
-		current.next = positionNode;
 	}
 
 	public boolean hasCycle() {
