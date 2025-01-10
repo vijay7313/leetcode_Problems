@@ -85,6 +85,25 @@ public class LinkedList {
 		return array;
 	}
 
+	public void deleteNode(int value) {
+
+		Node current = head;
+
+		while (current != null)
+			if (current.value == value)
+				break;
+			else
+				current = current.next;
+
+		while (current != null) {
+			current.value = current.next.value;
+			if (current.next.next == null)
+				current.next = null;
+			current = current.next;
+		}
+		size--;
+	}
+
 	public Node reverse() {
 
 		if (isEmpty())

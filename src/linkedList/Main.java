@@ -17,11 +17,15 @@ public class Main {
 
 		list.addLast(1);
 
-		System.out.print(Arrays.toString(list.toArray()));
+		System.out.println(Arrays.toString(list.toArray()));
 
 		list.reverse();
 
-		System.out.print(Arrays.toString(list.toArray()));
+		System.out.println(Arrays.toString(list.toArray()));
+
+		list.deleteNode(10);
+
+		System.out.println(Arrays.toString(list.toArray()));
 	}
 
 }
