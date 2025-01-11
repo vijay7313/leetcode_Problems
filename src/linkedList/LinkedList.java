@@ -164,7 +164,7 @@ public class LinkedList {
 	public Node removeNthFromTheEnd(int n) {
 
 		if (n < 1 || n > size)
-			return null;
+			return head;
 		Node slower = head;
 		Node faster = head;
 		int i = 1;
