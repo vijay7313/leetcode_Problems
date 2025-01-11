@@ -97,11 +97,15 @@ public class LinkedList {
 
 		while (current != null) {
 			current.value = current.next.value;
-			if (current.next.next == null)
+			if (current.next.next == null) {
 				current.next = null;
+				size--;
+			}
+
 			current = current.next;
+
 		}
-		size--;
+
 	}
 
 	public void createCycle(int position) {
@@ -155,6 +159,35 @@ public class LinkedList {
 		head = previous;
 
 		return head;
+	}
+
+	public Node removeNthFromTheEnd(int n) {
+
+		if (n < 1 || n > size)
+			return null;
+		Node slower = head;
+		Node faster = head;
+		int i = 1;
+		while (i++ < n + 1)
+			faster = faster.next;
+
+		if (faster == null) {
+			size--;
+			return head = head.next;
+		}
+
+		while (faster != null)
+			if (faster.next == null) {
+				slower.next = slower.next.next;
+				size--;
+				break;
+			} else {
+				slower = slower.next;
+				faster = faster.next;
+			}
+
+		return head;
+
 	}
 
 }
