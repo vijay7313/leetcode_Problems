@@ -252,23 +252,21 @@ public class LinkedList {
 		}
 
 		if (list1 != null)
-			if (isEmpty(newList))
-				tail = list1;
-			else
-				tail.next = list1;
-
+			return addToEnd(newList, list1, tail);
 		if (list2 != null)
-			if (isEmpty(newList))
-				tail = list2;
-			else
-				tail.next = list2;
+			return addToEnd(newList, list2, tail);
 
 		return newList;
 
 	}
 
-	public boolean isEmpty(Node newList) {
-		return newList == null;
+	public Node addToEnd(Node newList, Node list, Node tail) {
+		if (newList == null)
+			newList = tail = list;
+		else
+			tail.next = list;
+		return newList;
+
 	}
 
 }
