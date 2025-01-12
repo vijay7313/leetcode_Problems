@@ -85,6 +85,34 @@ public class LinkedList {
 		return array;
 	}
 
+	public int[] toArray(Node head) {
+
+		int[] array = new int[listCount(head)];
+
+		int index = 0;
+
+		Node current = head;
+
+		while (current != null) {
+			array[index++] = current.value;
+			current = current.next;
+		}
+
+		return array;
+	}
+
+	public int listCount(Node head) {
+
+		Node current = head;
+		int count = 0;
+
+		while (current != null) {
+			count++;
+			current = current.next;
+		}
+		return count;
+	}
+
 	public void deleteNode(int value) {
 
 		Node current = head;
@@ -188,6 +216,59 @@ public class LinkedList {
 
 		return head;
 
+	}
+
+	public Node mergedTwoSortedLists(LinkedList llist1, LinkedList llist2) {
+
+		Node list1 = llist1.head;
+		Node list2 = llist2.head;
+
+		// list1: 1 → 2 → 4
+		// list2: 1 → 3 → 4
+
+		Node newList = null;
+		Node tail = null;
+
+		while (list1 != null && list2 != null) {
+			Node node;
+			if (list1.value < list2.value) {
+				node = new Node(list1.value);
+				list1 = list1.next;
+			}
+
+			else {
+				node = new Node(list2.value);
+				list2 = list2.next;
+			}
+
+			if (newList == null)
+				newList = tail = node;
+
+			else {
+				tail.next = node;
+				tail = node;
+			}
+
+		}
+
+		if (list1 != null)
+			if (isEmpty(newList))
+				tail = list1;
+			else
+				tail.next = list1;
+
+		if (list2 != null)
+			if (isEmpty(newList))
+				tail = list2;
+			else
+				tail.next = list2;
+
+		return newList;
+
+	}
+
+	public boolean isEmpty(Node newList) {
+		return newList == null;
 	}
 
 }
