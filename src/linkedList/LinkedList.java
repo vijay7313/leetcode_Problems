@@ -123,7 +123,7 @@ public class LinkedList {
 			else
 				current = current.next;
 
-		while (current != null) {
+		while (current != null && current.next != null) {
 			current.value = current.next.value;
 			if (current.next.next == null) {
 				current.next = null;
@@ -231,6 +231,7 @@ public class LinkedList {
 
 		while (list1 != null && list2 != null) {
 			Node node;
+
 			if (list1.value < list2.value) {
 				node = new Node(list1.value);
 				list1 = list1.next;
@@ -267,6 +268,44 @@ public class LinkedList {
 			tail.next = list;
 		return newList;
 
+	}
+
+	public boolean isPalindrome() {
+
+		if (isEmpty())
+			return true;
+
+		Node slower = head;
+		Node faster = head;
+
+		while (faster != null && faster.next != null) {
+			slower = slower.next;
+			faster = faster.next.next;
+		}
+
+		Node prev = slower;
+
+		Node current = slower.next;
+		prev.next = null;
+
+		while (current != null) {
+			Node next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+
+		slower = prev;
+		faster = head;
+
+		while (slower != null) {
+			if (slower.value != faster.value)
+				return false;
+			slower = slower.next;
+			faster = faster.next;
+		}
+
+		return true;
 	}
 
 }

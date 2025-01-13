@@ -9,7 +9,7 @@ public class Main {
 
 		list.addFirst(10);
 
-		list.addLast(12);
+		list.addLast(2);
 
 		list.addFirst(2);
 
@@ -31,9 +31,11 @@ public class Main {
 //
 //		System.out.println(list.hasCycle());
 
-		list.removeNthFromTheEnd(1);
+//		list.removeNthFromTheEnd(1);
 
-		System.out.println(Arrays.toString(list.toArray()));
+//		System.out.println(Arrays.toString(list.toArray()));
+
+		System.out.println(list.isPalindrome());
 
 	}
 
