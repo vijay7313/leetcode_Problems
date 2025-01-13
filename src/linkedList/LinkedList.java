@@ -113,6 +113,7 @@ public class LinkedList {
 		return count;
 	}
 
+	// node should not be the last node of the list.
 	public void deleteNode(int value) {
 
 		Node current = head;
