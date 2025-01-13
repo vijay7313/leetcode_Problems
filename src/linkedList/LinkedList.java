@@ -277,8 +277,10 @@ public class LinkedList {
 	}
 
 	public boolean isPalindrome() {
+		// space =O(1);
+		// time = O(n);
 
-		if (isEmpty())
+		if (isEmpty() || head.next == null)
 			return true;
 
 		Node slower = head;
@@ -312,6 +314,35 @@ public class LinkedList {
 		}
 
 		return true;
+	}
+
+	public boolean isPalindrome2ndApproach() {
+		// space =O(n);
+		// time = O(n);
+
+		if (isEmpty() || head.next == null)
+			return true;
+
+		Node reverse = null;
+		Node current = head;
+
+		while (current != null) {
+			Node newNode = new Node(current.value);
+			newNode.next = reverse;
+			reverse = newNode;
+			current = current.next;
+		}
+
+		Node original = head;
+		while (original != null) {
+			if (original.value != reverse.value) {
+				return false;
+			}
+			original = original.next;
+			reverse = reverse.next;
+		}
+		return true;
+
 	}
 
 }
