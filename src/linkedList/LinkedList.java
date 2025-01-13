@@ -122,6 +122,7 @@ public class LinkedList {
 		else if (current.next == null) {
 			head = null;
 			size--;
+			return;
 		}
 
 		while (current != null)
