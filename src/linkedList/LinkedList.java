@@ -117,6 +117,13 @@ public class LinkedList {
 
 		Node current = head;
 
+		if (current == null)
+			throw new IllegalStateException();
+		else if (current.next == null) {
+			head = null;
+			size--;
+		}
+
 		while (current != null)
 			if (current.value == value)
 				break;
@@ -129,9 +136,7 @@ public class LinkedList {
 				current.next = null;
 				size--;
 			}
-
 			current = current.next;
-
 		}
 
 	}
