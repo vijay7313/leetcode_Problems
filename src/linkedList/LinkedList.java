@@ -346,6 +346,38 @@ public class LinkedList {
 
 	}
 
+	public Node addTwoNumbers(LinkedList llist1, LinkedList llist2) {
+
+		Node l1 = llist1.head;
+		Node l2 = llist2.head;
+
+		Node list = null, node = null, pointer = null;
+
+		int carry = 0;
+
+		while (l1 != null || l2 != null || carry != 0) {
+
+			int l1Value = l1 != null ? l1.value : 0;
+			int l2Value = l2 != null ? l2.value : 0;
+
+			l1 = l1 != null ? l1 = l1.next : null;
+			l2 = l2 != null ? l2 = l2.next : null;
+
+			int sum = l1Value + l2Value + carry;
+			carry = sum / 10;
+
+			node = new Node(sum % 10);
+
+			if (list == null)
+				list = node;
+			else
+				pointer.next = node;
+			pointer = node;
+		}
+
+		return list;
+	}
+
 }
 
 class Node {
