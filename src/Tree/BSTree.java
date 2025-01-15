@@ -8,7 +8,7 @@ public class BSTree {
 
 		Tree node = new Tree(value);
 
-		if (isEmpty())
+		if (isEmpty(root))
 			root = node;
 		else
 			insertIntoTree(node);
@@ -38,7 +38,28 @@ public class BSTree {
 		}
 	}
 
-	public boolean isEmpty() {
+	public int maxDepth() {
+
+		return maxDepth(root);
+	}
+
+	private int maxDepth(Tree root) {
+
+		if (isEmpty(root))
+			return 0;
+
+		if (isLeaf(root))
+			return 1;
+
+		return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+	}
+
+	private boolean isLeaf(Tree root) {
+
+		return root.left == null && root.right == null;
+	}
+
+	public boolean isEmpty(Tree root) {
 
 		return root == null;
 	}

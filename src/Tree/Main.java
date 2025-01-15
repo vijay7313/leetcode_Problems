@@ -12,6 +12,8 @@ public class Main {
 
 			tree.insert(value);
 
+		System.out.println(tree.maxDepth());
+
 	}
 
 }
