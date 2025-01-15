@@ -12,7 +12,11 @@ public class Main {
 
 			tree.insert(value);
 
-		System.out.println(tree.maxDepth());
+//		System.out.println(tree.maxDepth());
+
+//		tree.falseForisValidBST();
+
+		System.out.println(tree.isValidBST());
 
 	}
 

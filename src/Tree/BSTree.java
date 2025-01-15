@@ -63,6 +63,33 @@ public class BSTree {
 
 		return root == null;
 	}
+
+	public boolean isValidBST() {
+		return isValidBST(root, null, null);
+	}
+
+	private boolean isValidBST(Tree root, Integer min, Integer max) {
+
+		if (isEmpty(root))
+			return true;
+
+		if (min != null && root.value <= min || max != null && root.value >= max)
+			return false;
+
+		return isValidBST(root.left, min, root.value) && isValidBST(root.right, root.value, max);
+	}
+
+	public void falseForisValidBST() {
+
+		if (root == null)
+			return;
+
+		Tree temp = root.right;
+
+		root.right = root.left;
+
+		root.left = temp;
+	}
 }
 
 class Tree {
