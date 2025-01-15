@@ -90,6 +90,22 @@ public class BSTree {
 
 		root.left = temp;
 	}
+
+	public boolean isSymmetric() {
+		return isSymmetric(root.left, root.right);
+
+	}
+
+	private boolean isSymmetric(Tree root1, Tree root2) {
+
+		if (root1 == null && root2 == null)
+			return true;
+
+		if (root1 == null || root2 == null || root1.value != root2.value)
+			return false;
+
+		return isSymmetric(root1.left, root2.right) && isSymmetric(root1.right, root2.left);
+	}
 }
 
 class Tree {

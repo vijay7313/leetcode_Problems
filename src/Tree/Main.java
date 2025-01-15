@@ -16,7 +16,9 @@ public class Main {
 
 //		tree.falseForisValidBST();
 
-		System.out.println(tree.isValidBST());
+//		System.out.println(tree.isValidBST());
+		
+		System.out.println(tree.isSymmetric());
 
 	}
 
