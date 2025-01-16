@@ -1,5 +1,8 @@
 package Tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BSTree {
 
 	private Tree root;
@@ -105,6 +108,35 @@ public class BSTree {
 			return false;
 
 		return isSymmetric(root1.left, root2.right) && isSymmetric(root1.right, root2.left);
+	}
+
+	public List<List<Integer>> levelOrder() {
+
+		List<List<Integer>> list = new ArrayList<>();
+
+		if (root == null)
+			return list;
+		else {
+			int heightOfTree = maxDepth(root);
+			for (int i = 0; i < heightOfTree; i++)
+				list.add(levelOrder(root, new ArrayList<>(), i));
+		}
+
+		return list;
+	}
+
+	private List<Integer> levelOrder(Tree root, List<Integer> list, int digit) {
+
+		if (root == null)
+			return null;
+
+		if (digit == 0)
+			list.add(root.value);
+
+		levelOrder(root.left, list, digit - 1);
+		levelOrder(root.right, list, digit - 1);
+
+		return list;
 	}
 }
 

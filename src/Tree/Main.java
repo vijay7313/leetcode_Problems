@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int[] array = { 5, 5, 2, 7, 4, 9, 1 };
+		int[] array = { 5, 2, 7, 4, 9, 1 };
 
 		BSTree tree = new BSTree();
 
@@ -17,8 +17,10 @@ public class Main {
 //		tree.falseForisValidBST();
 
 //		System.out.println(tree.isValidBST());
-		
-		System.out.println(tree.isSymmetric());
+
+//		System.out.println(tree.isSymmetric());
+
+		System.out.println(tree.levelOrder());
 
 	}
 
