@@ -4,13 +4,13 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int[] array = { 5, 2, 7, 4, 9, 1 };
+		int[] array = { 1, 2, 3, 4, 5, 6 };
 
 		BSTree tree = new BSTree();
 
-		for (int value : array)
-
-			tree.insert(value);
+//		for (int value : array)
+//
+//			tree.insert(value);
 
 //		System.out.println(tree.maxDepth());
 
@@ -20,7 +20,9 @@ public class Main {
 
 //		System.out.println(tree.isSymmetric());
 
-		System.out.println(tree.levelOrder());
+		Tree root = tree.sortedArrayToBST(array);
+
+		System.out.println(tree.levelOrder(root));
 
 	}
 

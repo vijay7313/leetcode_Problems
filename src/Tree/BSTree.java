@@ -125,6 +125,21 @@ public class BSTree {
 		return list;
 	}
 
+	public List<List<Integer>> levelOrder(Tree root) {
+
+		List<List<Integer>> list = new ArrayList<>();
+
+		if (root == null)
+			return list;
+		else {
+			int heightOfTree = maxDepth(root);
+			for (int i = 0; i < heightOfTree; i++)
+				list.add(levelOrder(root, new ArrayList<>(), i));
+		}
+
+		return list;
+	}
+
 	private List<Integer> levelOrder(Tree root, List<Integer> list, int digit) {
 
 		if (root == null)
@@ -137,6 +152,27 @@ public class BSTree {
 		levelOrder(root.right, list, digit - 1);
 
 		return list;
+	}
+
+	public Tree sortedArrayToBST(int[] nums) {
+
+		return sortedArrayToBST(nums, 0, nums.length - 1);
+
+	}
+
+	private Tree sortedArrayToBST(int[] nums, int left, int right) {
+
+		if (left > right)
+			return null;
+
+		int mid = (left + right) / 2;
+
+		Tree root = new Tree(nums[mid]);
+
+		root.left = sortedArrayToBST(nums, left, mid - 1);
+		root.right = sortedArrayToBST(nums, mid + 1, right);
+
+		return root;
 	}
 }
 
