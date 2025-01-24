@@ -378,6 +378,39 @@ public class LinkedList {
 		return list;
 	}
 
+	public Node removeDuplicatesFromSortedList() {
+
+		if (head == null || head.next == null)
+			return head;
+
+		Node current = head;
+
+		Node pointer = null;
+
+		head = null;
+
+		while (current != null && current.next != null) {
+
+			int currentValue = current.value;
+			while (current.next != null && currentValue == current.next.value) {
+				current = current.next;
+				size--;
+			}
+
+			if (head == null)
+				head = pointer = current;
+			else {
+				pointer.next = current;
+				pointer = current;
+			}
+			current = current.next;
+
+		}
+
+		return head;
+
+	}
+
 }
 
 class Node {
