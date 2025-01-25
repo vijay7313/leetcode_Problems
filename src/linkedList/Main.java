@@ -35,9 +35,13 @@ public class Main {
 
 //		System.out.println(Arrays.toString(list.toArray()));
 
-		System.out.println(list.isPalindrome());
+//		System.out.println(list.isPalindrome());
 
 //		System.out.println(list.isPalindrome2ndApproach());
+
+		Node node = list.middleNode();
+
+		System.out.println(Arrays.toString(list.toArray(node)));
 
 	}
 

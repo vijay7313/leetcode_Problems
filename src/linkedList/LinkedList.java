@@ -389,7 +389,7 @@ public class LinkedList {
 
 		head = null;
 
-		while (current != null && current.next != null) {
+		while (current != null) {
 
 			int currentValue = current.value;
 			while (current.next != null && currentValue == current.next.value) {
@@ -408,6 +408,26 @@ public class LinkedList {
 		}
 
 		return head;
+
+	}
+
+	public Node middleNode() {
+		return middleNode(head);
+	}
+
+	public Node middleNode(Node head) {
+
+		Node first = head;
+
+		Node second = head;
+
+		while (second != null && second.next != null) {
+
+			first = first.next;
+			second = second.next.next;
+		}
+
+		return first;
 
 	}
 
