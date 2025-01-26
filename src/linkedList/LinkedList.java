@@ -431,6 +431,25 @@ public class LinkedList {
 
 	}
 
+	public Node removeElements(int val) {
+
+		Node current = head;
+
+		while (head != null && head.value == val)
+			head = head.next;
+
+		while (current != null) {
+			while (current.next != null && current.next.value == val) {
+				current.next = current.next.next;
+				size--;
+			}
+
+			current = current.next;
+		}
+		return head;
+
+	}
+
 }
 
 class Node {

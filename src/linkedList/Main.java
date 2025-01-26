@@ -1,31 +1,27 @@
 package linkedList;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
+
+		List<Integer> nums = Arrays.asList(1, 2, 6, 3, 4, 5, 6);
 		LinkedList list = new LinkedList();
 
-		list.addFirst(10);
-
-		list.addLast(2);
-
-		list.addFirst(2);
-
-		list.addFirst(1);
-
-		list.addLast(1);
-
-		System.out.println(Arrays.toString(list.toArray()));
-
-		list.reverse();
-
-		System.out.println(Arrays.toString(list.toArray()));
-
-		list.deleteNode(10);
-
-		System.out.println(Arrays.toString(list.toArray()));
+		for (int num : nums)
+			list.addLast(num);
+//
+//		System.out.println(Arrays.toString(list.toArray()));
+//
+//		list.reverse();
+//
+//		System.out.println(Arrays.toString(list.toArray()));
+//
+//		list.deleteNode(10);
+//
+//		System.out.println(Arrays.toString(list.toArray()));
 
 //		list.createCycle(3);
 //
@@ -38,10 +34,14 @@ public class Main {
 //		System.out.println(list.isPalindrome());
 
 //		System.out.println(list.isPalindrome2ndApproach());
+//
+//		Node node = list.middleNode();
+//
+//		System.out.println(Arrays.toString(list.toArray(node)));
 
-		Node node = list.middleNode();
+		list.removeElements(6);
 
-		System.out.println(Arrays.toString(list.toArray(node)));
+		System.out.println(Arrays.toString(list.toArray()));
 
 	}
 
