@@ -450,6 +450,36 @@ public class LinkedList {
 
 	}
 
+	public Node swapNodes(int k) {
+
+		Node slower = head;
+		Node faster = head;
+
+		int i = 1;
+
+		while (i++ <= k && faster != null)
+			faster = faster.next;
+
+		while (faster != null) {
+			slower = slower.next;
+			faster = faster.next;
+		}
+
+		faster = head;
+
+		i = 1;
+
+		while (i++ < k && faster != null)
+			faster = faster.next;
+
+		int temp = slower.value;
+		slower.value = faster.value;
+		faster.value = temp;
+
+		return head;
+
+	}
+
 }
 
 class Node {

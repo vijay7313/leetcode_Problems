@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		List<Integer> nums = Arrays.asList(1, 2, 6, 3, 4, 5, 6);
+		List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
 		LinkedList list = new LinkedList();
 
 		for (int num : nums)
@@ -39,10 +39,15 @@ public class Main {
 //
 //		System.out.println(Arrays.toString(list.toArray(node)));
 
-		list.removeElements(6);
+//		list.removeElements(6);
+//
+//		System.out.println(Arrays.toString(list.toArray()));
+
+		System.out.println(Arrays.toString(list.toArray()));
+
+		list.swapNodes(2);
 
 		System.out.println(Arrays.toString(list.toArray()));
 
 	}
-
 }
