@@ -12,15 +12,15 @@ public class CountPrimes {
 		int count = 0;
 		boolean[] bool = new boolean[num];
 
-		for (int i = 0; i < bool.length; i++)
-			bool[i] = true;
+		while (count < bool.length)
+			bool[count++] = true;
 
-		double sqr = Math.sqrt(num);
-		for (int i = 2; i < sqr; i++)
+		for (int i = 2; i < Math.sqrt(num); i++)
 			if (bool[i] == true)
 				for (int j = (i * i); j < num; j = j + i)
 					bool[j] = false;
 
+		count = 0;
 		for (int i = 2; i < bool.length; i++)
 			if (bool[i] == true)
 				count++;
