@@ -1,29 +1,75 @@
 package string;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-//xaabacxcabaaxcabaax
-//klvxwqyzugrdoaccdafdfrvxiowkcuedfhoixzipxrkzbvpusslsgfjocvidnpsnkqdfnnzzawzsslwnvvjyoignsfbxkgrokzyusxikxumrxlzzrnbtrixxfioormoyyejashrowjqqzifacecvoruwkuessttlexvdptuvodoavsjaepvrfvbdhumtuvxufzzyowiswokioyjtzzmevttheeyjqcldllxvjraeyflthntsmipaoyjixygbtbvbnnrmlwwkeikhnnmlfspjgmcxwbjyhomfjdcnogqjviggklplpznfwjydkxzjkoskvqvnxfzdrsmooyciwulvtlmvnjbbmffureoilszlonibbcwfsjzguxqrjwypwrskhrttvnqoqisdfuifqnabzbvyzgbxfvmcomneykfmycevnrcsyqclamfxskmsxreptpxqxqidvjbuduktnwwoztvkuebfdigmjqfuolqzvjincchlmbrxpqgguwuyhrdtwqkdlqidlxzqktgzktihvlwsbysjeykiwokyqaskjjngovbagspyspeghutyoeahhgynzsyaszlirmlekpboywqdliumihwnsnwjc
-
+/*
+xaabacxcabaaxcabaax
+klvxwqyzugrdoaccdafdfrvxiowkcuedfhoixzipxrkzbvpusslsgfjocvidnpsnkqdfnnzzawzsslwnvvjyoignsfbxkgrokzyusxikxumrxlzzrnbtrixxfioormoyyejashrowjqqzifacecvoruwkuessttlexvdptuvodoavsjaepvrfvbdhumtuvxufzzyowiswokioyjtzzmevttheeyjqcldllxvjraeyflthntsmipaoyjixygbtbvbnnrmlwwkeikhnnmlfspjgmcxwbjyhomfjdcnogqjviggklplpznfwjydkxzjkoskvqvnxfzdrsmooyciwulvtlmvnjbbmffureoilszlonibbcwfsjzguxqrjwypwrskhrttvnqoqisdfuifqnabzbvyzgbxfvmcomneykfmycevnrcsyqclamfxskmsxreptpxqxqidvjbuduktnwwoztvkuebfdigmjqfuolqzvjincchlmbrxpqgguwuyhrdtwqkdlqidlxzqktgzktihvlwsbysjeykiwokyqaskjjngovbagspyspeghutyoeahhgynzsyaszlirmlekpboywqdliumihwnsnwjc
+a
+aa
+aaa
+aaaa
+abb
+babad
+cbbd
+adam
+tattarrattat
+ */
 public class LongestPalindromicSubstring {
 	public static void main(String[] args) {
 
-		long start = System.currentTimeMillis();
+		String s = "tattarrattat";
 
-		String s = "klvxwqyzugrdoaccdafdfrvxiowkcuedfhoixzipxrkzbvpusslsgfjocvidnpsnkqdfnnzzawzsslwnvvjyoignsfbxkgrokzyusxikxumrxlzzrnbtrixxfioormoyyejashrowjqqzifacecvoruwkuessttlexvdptuvodoavsjaepvrfvbdhumtuvxufzzyowiswokioyjtzzmevttheeyjqcldllxvjraeyflthntsmipaoyjixygbtbvbnnrmlwwkeikhnnmlfspjgmcxwbjyhomfjdcnogqjviggklplpznfwjydkxzjkoskvqvnxfzdrsmooyciwulvtlmvnjbbmffureoilszlonibbcwfsjzguxqrjwypwrskhrttvnqoqisdfuifqnabzbvyzgbxfvmcomneykfmycevnrcsyqclamfxskmsxreptpxqxqidvjbuduktnwwoztvkuebfdigmjqfuolqzvjincchlmbrxpqgguwuyhrdtwqkdlqidlxzqktgzktihvlwsbysjeykiwokyqaskjjngovbagspyspeghutyoeahhgynzsyaszlirmlekpboywqdliumihwnsnwjc";
+		String result = longestPalindromeOofSquare(s); // o(n^2)
 
-		String result = longestPalindrome(s);
+//		String result = longestPalindromeOofNcube(s); // o(n^3)
 
 		System.out.println(result);
 
-		long end = System.currentTimeMillis();
+	}
 
-		System.out.println(end - start);
+	// Expand around center algorithm o(n^2)
+	public static String longestPalindromeOofSquare(String s) {
+
+		if (s == null || s.length() < 1)
+			return "";
+
+		int length = s.length();
+
+		String longestPalindrome = "";
+
+		String oddPalindrome = "";
+
+		String evenPalindrome = "";
+
+		for (int i = 0; i < length; i++) {
+
+			oddPalindrome = expandAroundCenter(i, i, s, length);
+
+			evenPalindrome = expandAroundCenter(i, i + 1, s, length);
+
+			if (oddPalindrome.length() > longestPalindrome.length())
+				longestPalindrome = oddPalindrome;
+
+			if (evenPalindrome.length() > longestPalindrome.length())
+				longestPalindrome = evenPalindrome;
+
+		}
+
+		return longestPalindrome;
+	}
+
+	// support for expand around center algorithm
+	public static String expandAroundCenter(int left, int right, String s, int sLength) {
+
+		while (left >= 0 && right < sLength && s.charAt(left) == s.charAt(right)) {
+			left--;
+			right++;
+		}
+		return s.substring(left + 1, right);
 
 	}
 
-	public static String longestPalindrome(String s) {
+	// Brute force algorithm o(n^3)
+	public static String longestPalindromeOofNcube(String s) {
 
 		if (s == null || s.length() < 1)
 			return "";
@@ -40,6 +86,7 @@ public class LongestPalindromicSubstring {
 
 	}
 
+	// support for brute force algorithm
 	public static boolean isPalindrome(String s, int start, int end) {
 
 		while (start < end)
