@@ -1,5 +1,8 @@
 package string;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 //xaabacxcabaaxcabaax
 //klvxwqyzugrdoaccdafdfrvxiowkcuedfhoixzipxrkzbvpusslsgfjocvidnpsnkqdfnnzzawzsslwnvvjyoignsfbxkgrokzyusxikxumrxlzzrnbtrixxfioormoyyejashrowjqqzifacecvoruwkuessttlexvdptuvodoavsjaepvrfvbdhumtuvxufzzyowiswokioyjtzzmevttheeyjqcldllxvjraeyflthntsmipaoyjixygbtbvbnnrmlwwkeikhnnmlfspjgmcxwbjyhomfjdcnogqjviggklplpznfwjydkxzjkoskvqvnxfzdrsmooyciwulvtlmvnjbbmffureoilszlonibbcwfsjzguxqrjwypwrskhrttvnqoqisdfuifqnabzbvyzgbxfvmcomneykfmycevnrcsyqclamfxskmsxreptpxqxqidvjbuduktnwwoztvkuebfdigmjqfuolqzvjincchlmbrxpqgguwuyhrdtwqkdlqidlxzqktgzktihvlwsbysjeykiwokyqaskjjngovbagspyspeghutyoeahhgynzsyaszlirmlekpboywqdliumihwnsnwjc
 
@@ -10,9 +13,7 @@ public class LongestPalindromicSubstring {
 
 		String s = "klvxwqyzugrdoaccdafdfrvxiowkcuedfhoixzipxrkzbvpusslsgfjocvidnpsnkqdfnnzzawzsslwnvvjyoignsfbxkgrokzyusxikxumrxlzzrnbtrixxfioormoyyejashrowjqqzifacecvoruwkuessttlexvdptuvodoavsjaepvrfvbdhumtuvxufzzyowiswokioyjtzzmevttheeyjqcldllxvjraeyflthntsmipaoyjixygbtbvbnnrmlwwkeikhnnmlfspjgmcxwbjyhomfjdcnogqjviggklplpznfwjydkxzjkoskvqvnxfzdrsmooyciwulvtlmvnjbbmffureoilszlonibbcwfsjzguxqrjwypwrskhrttvnqoqisdfuifqnabzbvyzgbxfvmcomneykfmycevnrcsyqclamfxskmsxreptpxqxqidvjbuduktnwwoztvkuebfdigmjqfuolqzvjincchlmbrxpqgguwuyhrdtwqkdlqidlxzqktgzktihvlwsbysjeykiwokyqaskjjngovbagspyspeghutyoeahhgynzsyaszlirmlekpboywqdliumihwnsnwjc";
 
-//		String result = longestPalindromeOofNcube(s); // o(n^3)
-
-		String result = longestPalindromeOofNSquare(s); // 0(n^2)
+		String result = longestPalindrome(s);
 
 		System.out.println(result);
 
@@ -22,31 +23,7 @@ public class LongestPalindromicSubstring {
 
 	}
 
-	public static String longestPalindromeOofNSquare(String s) {
-
-		int lenght = s.length();
-
-		String longestPalindrome = String.valueOf(s.charAt(0));
-
-		for (int i = 1; i < lenght; i++) {
-
-			boolean isPalindrome = false;
-
-			int left = i - 1;
-			int right = i + 1;
-
-			while ((left >= 0 && right <= lenght - 1) && s.charAt(left--) == s.charAt(right++))
-				isPalindrome = true;
-
-			if (isPalindrome && longestPalindrome.length() < s.substring(left + 1, right).length())
-				longestPalindrome = s.substring(left + 1, right);
-		}
-		return longestPalindrome;
-
-	}
-
-	// o(n^3)
-	public static String longestPalindromeOofNcube(String s) {
+	public static String longestPalindrome(String s) {
 
 		if (s == null || s.length() < 1)
 			return "";
