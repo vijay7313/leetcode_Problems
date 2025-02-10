@@ -1,13 +1,47 @@
 package string;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LongestSubstringWithoutRepeatingCharacters {
 
 	public static void main(String[] args) {
-		String str = "";
+		String str = "pwwkew";
 
-		int result = lengthOfLongestSubstring(str);
+//		int result = lengthOfLongestSubstring(str);
+
+		int result = slidingWindowTechnique(str);
 
 		System.out.println(result);
+	}
+
+	// o(n)
+	public static int slidingWindowTechnique(String str) {
+
+		if (str.length() < 1)
+			return 0;
+
+		Set<Character> set = new HashSet<>();
+
+		set.add(str.charAt(0));
+
+		int start = 0;
+
+		int longCount = 1;
+
+		for (int i = 1; i < str.length(); i++) {
+
+			while (set.contains(str.charAt(i)))
+				set.remove(str.charAt(start++));
+
+			set.add(str.charAt(i));
+
+			longCount = (longCount < (i + 1) - start) ? (i + 1) - start : longCount;
+
+		}
+
+		return longCount;
+
 	}
 
 	public static int lengthOfLongestSubstring(String str) {
