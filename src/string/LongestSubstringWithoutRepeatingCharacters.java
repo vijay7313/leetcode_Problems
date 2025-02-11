@@ -23,13 +23,11 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
 		Set<Character> set = new HashSet<>();
 
-		set.add(str.charAt(0));
-
 		int start = 0;
 
-		int longCount = 1;
+		int longCount = 0;
 
-		for (int i = 1; i < str.length(); i++) {
+		for (int i = 0; i < str.length(); i++) {
 
 			while (set.contains(str.charAt(i)))
 				set.remove(str.charAt(start++));
