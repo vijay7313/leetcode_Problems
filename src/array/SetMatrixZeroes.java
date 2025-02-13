@@ -15,9 +15,9 @@ public class SetMatrixZeroes {
 	public static void main(String[] args) {
 		int[][] matrix = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
 
-//		setZeroesWithHashSet(matrix);
+		setZeroesWithHashSet(matrix);
 
-		setZeroesWithExtraArrays(matrix);
+//		setZeroesWithExtraArrays(matrix);
 	}
 
 	// Partial Optimization, time O(m*n) & space O(m+n) complexity
@@ -61,6 +61,9 @@ public class SetMatrixZeroes {
 				matrix[i][incre] = 0;
 				set.add("row-" + i + "--" + "column-" + incre);
 			}
+
+		}
+		for (int incre = 0; incre < matrix.length; incre++) {
 			if (matrix[incre][j] != 0) {
 				matrix[incre][j] = 0;
 				set.add("row-" + incre + "--" + "column-" + j);
