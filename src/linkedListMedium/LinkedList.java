@@ -239,4 +239,38 @@ public class LinkedList {
 		return odd;
 	}
 
+	// worst time complexity o(m*n)
+	public ListNode intersectionOfTwoLinkedLists(LinkedList list1, LinkedList list2, LinkedList list3) {
+
+		ListNode headA = list1.head;
+
+		ListNode headB = list2.head;
+
+		getLastNode(headA).next = list3.head;
+
+		getLastNode(headB).next = list3.head;
+
+		ListNode dummyHeadA = headA;
+
+		ListNode dummyHeadB = headB;
+
+		while (dummyHeadA != null) {
+
+			while (dummyHeadB != null) {
+
+				if (dummyHeadA == dummyHeadB)
+					return dummyHeadA;
+
+				dummyHeadB = dummyHeadB.next;
+			}
+
+			dummyHeadA = dummyHeadA.next;
+
+			dummyHeadB = headB;
+		}
+
+		return null;
+
+	}
+
 }
