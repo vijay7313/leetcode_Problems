@@ -1,7 +1,6 @@
 package linkedListMedium;
 
 import java.util.Arrays;
-import java.util.List;
 
 import linkedListMedium.LinkedList.ListNode;
 
