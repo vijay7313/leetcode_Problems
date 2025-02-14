@@ -195,4 +195,48 @@ public class LinkedList {
 
 	}
 
+	public ListNode oddEvenLinkedList(LinkedList list) {
+
+		ListNode current = list.head;
+
+		if (current == null || current.next == null)
+			return current;
+
+		ListNode odd = current;
+
+		ListNode oddPointer = odd;
+
+		ListNode even = current.next;
+
+		ListNode evenPointer = even;
+
+		int count = 1;
+
+		current = current.next.next;
+
+		while (current != null) {
+
+			ListNode next = current.next;
+
+			if (count % 2 == 1) {
+				oddPointer.next = current;
+
+				oddPointer = current;
+			} else {
+				evenPointer.next = current;
+
+				evenPointer = current;
+			}
+			current = next;
+			count++;
+
+		}
+
+		evenPointer.next = null;
+
+		oddPointer.next = even;
+
+		return odd;
+	}
+
 }
