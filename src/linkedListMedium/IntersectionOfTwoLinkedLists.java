@@ -24,7 +24,9 @@ public class IntersectionOfTwoLinkedLists {
 		for (int num : nums3)
 			list3.add(num);
 
-		ListNode intersect = list1.intersectionOfTwoLinkedLists(list1, list2, list3);
+//		ListNode intersect = list1.intersectionOfTwoLinkedListsOofMN(list1, list2, list3);
+
+		ListNode intersect = list1.intersectionOfTwoLinkedListsOofMplusN(list1, list2, list3);
 
 		int[] array = list1.toArray(intersect);
 

@@ -1,6 +1,8 @@
 package linkedListMedium;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LinkedList {
 
@@ -239,8 +241,8 @@ public class LinkedList {
 		return odd;
 	}
 
-	// worst time complexity o(m*n)
-	public ListNode intersectionOfTwoLinkedLists(LinkedList list1, LinkedList list2, LinkedList list3) {
+	// time complexity O(m*n) and space complexity O(1)
+	public ListNode intersectionOfTwoLinkedListsOofMN(LinkedList list1, LinkedList list2, LinkedList list3) {
 
 		ListNode headA = list1.head;
 
@@ -267,6 +269,41 @@ public class LinkedList {
 			dummyHeadA = dummyHeadA.next;
 
 			dummyHeadB = headB;
+		}
+
+		return null;
+
+	}
+
+	// time complexity O(m+n) and space complexity O(m)
+	public ListNode intersectionOfTwoLinkedListsOofMplusN(LinkedList list1, LinkedList list2, LinkedList list3) {
+
+		ListNode headA = list1.head;
+
+		ListNode headB = list2.head;
+
+		getLastNode(headA).next = list3.head;
+		getLastNode(headB).next = list3.head;
+
+		Set<ListNode> set = new HashSet<>();
+
+		ListNode dummyHeadA = headA;
+
+		ListNode dummyHeadB = headB;
+
+		while (dummyHeadA != null) {
+
+			set.add(dummyHeadA);
+
+			dummyHeadA = dummyHeadA.next;
+		}
+
+		while (dummyHeadB != null) {
+
+			if (set.contains(dummyHeadB))
+				return dummyHeadB;
+
+			dummyHeadB = dummyHeadB.next;
 		}
 
 		return null;
