@@ -1,5 +1,8 @@
 package treeMedium;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tree {
 
 	private TreeNode root;
@@ -63,5 +66,26 @@ public class Tree {
 
 	public int size() {
 		return size;
+	}
+
+	public List<Integer> inOrderTraversal() {
+
+		List<Integer> list = new ArrayList<>(size);
+
+		inOrderTraversal(root, list);
+
+		return list;
+	}
+
+	private void inOrderTraversal(TreeNode root, List<Integer> list) {
+
+		if (root == null)
+			return;
+
+		inOrderTraversal(root.left, list);
+
+		list.add(root.val);
+
+		inOrderTraversal(root.right, list);
 	}
 }
