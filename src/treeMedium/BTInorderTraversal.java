@@ -1,6 +1,8 @@
 package treeMedium;
 
-public class Main {
+import java.util.List;
+
+public class BTInorderTraversal {
 	public static void main(String[] args) {
 
 		int[] nums = { 3, 2, 5, 1, 9, 7, 11 };
@@ -10,9 +12,9 @@ public class Main {
 		for (int num : nums)
 			tree.add(num);
 
-		int height = tree.heightOfTree();
+		List<Integer> inOrder = tree.inOrderTraversal();
 
-		System.out.println(height);
+		System.out.println(inOrder);
 
 	}
 }
