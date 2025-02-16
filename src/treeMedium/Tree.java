@@ -113,5 +113,38 @@ public class Tree {
 		return root.left == null && root.right == null;
 	}
 
-	
+	public List<List<Integer>> binaryTreeZigzagLevelOrderTraversal() {
+
+		List<List<Integer>> list = new ArrayList<>();
+
+		for (int level = 0; level < heightOfTree(); level++) {
+
+			boolean zigZag = level % 2 == 0 ? false : true;
+
+			list.add(binaryTreeZigzagLevelOrderTraversal(root, new ArrayList<>(), level, zigZag));
+
+		}
+
+		return list;
+	}
+
+	private List<Integer> binaryTreeZigzagLevelOrderTraversal(TreeNode root, List<Integer> list, int level,
+			boolean zigZag) {
+
+		if (root == null)
+			return null;
+
+		if (level == 0)
+			list.add(root.val);
+
+		if (zigZag) {
+			binaryTreeZigzagLevelOrderTraversal(root.right, list, level - 1, zigZag);
+			binaryTreeZigzagLevelOrderTraversal(root.left, list, level - 1, zigZag);
+		} else {
+			binaryTreeZigzagLevelOrderTraversal(root.left, list, level - 1, zigZag);
+			binaryTreeZigzagLevelOrderTraversal(root.right, list, level - 1, zigZag);
+		}
+
+		return list;
+	}
 }
