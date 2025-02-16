@@ -20,28 +20,28 @@ public class Tree {
 		}
 	}
 
-	public void add(int val) {
+	public boolean add(int val) {
 
 		TreeNode node = new TreeNode(val);
 
 		if (isEmpty()) {
 			root = node;
 			size++;
-		}
+		} else
+//			return addToRightPosition(node);
+			return addToRightPosition(root, node);
 
-		else
-			addToRightPosition(node);
-
+		return true;
 	}
 
-	public void addToRightPosition(TreeNode node) {
+	public boolean addToRightPosition(TreeNode node) {
 
 		TreeNode current = root;
 
 		while (true)
 
 			if (current.val > node.val) {
-				if (current.left == null) {
+				if (isEmpty(current.left)) {
 					current.left = node;
 					break;
 				}
@@ -49,19 +49,46 @@ public class Tree {
 			}
 
 			else if (current.val < node.val) {
-				if (current.right == null) {
+				if (isEmpty(current.right)) {
 					current.right = node;
 					break;
 				}
 				current = current.right;
 			} else
-				return;
-
+				return false;
 		size++;
+		return true;
+	}
+
+	private boolean addToRightPosition(TreeNode root, TreeNode node) {
+
+		if (node.val < root.val) {
+
+			if (isEmpty(root.left)) {
+				root.left = node;
+				size++;
+			} else
+				return addToRightPosition(root.left, node);
+
+		} else if (node.val > root.val) {
+
+			if (isEmpty(root.right)) {
+				root.right = node;
+				size++;
+			} else
+				return addToRightPosition(root.right, node);
+		} else
+			return false;
+
+		return true;
 	}
 
 	public boolean isEmpty() {
 		return root == null;
+	}
+
+	public boolean isEmpty(TreeNode node) {
+		return node == null;
 	}
 
 	public int size() {
