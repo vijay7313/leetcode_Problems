@@ -88,4 +88,30 @@ public class Tree {
 
 		inOrderTraversal(root.right, list);
 	}
+
+	public int heightOfTree() {
+
+		return heightOfTree(root);
+
+	}
+
+	private int heightOfTree(TreeNode root) {
+
+		if (root == null)
+			return 0;
+
+		if (isLeaf(root))
+			return 1;
+
+		int left = heightOfTree(root.left);
+		int right = heightOfTree(root.right);
+
+		return 1 + Math.max(left, right);
+	}
+
+	private boolean isLeaf(TreeNode root) {
+		return root.left == null && root.right == null;
+	}
+
+	
 }
