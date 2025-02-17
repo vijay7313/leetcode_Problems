@@ -8,7 +8,7 @@ public class Main {
 		Tree tree = new Tree();
 
 		for (int num : nums)
-			System.out.println(tree.add(num));
+			tree.add(num);
 
 		int height = tree.heightOfTree();
 
