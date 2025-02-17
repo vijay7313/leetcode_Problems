@@ -28,13 +28,12 @@ public class Tree {
 			root = node;
 			size++;
 		} else
-//			return addToRightPosition(node);
-			return addToRightPosition(root, node);
+			return addToRightPosition(node);
 
 		return true;
 	}
 
-	public boolean addToRightPosition(TreeNode node) {
+	private boolean addToRightPosition(TreeNode node) {
 
 		TreeNode current = root;
 
@@ -60,27 +59,23 @@ public class Tree {
 		return true;
 	}
 
-	private boolean addToRightPosition(TreeNode root, TreeNode node) {
+	public void addRec(int val) {
+		root = addRec(root, val);
+	}
 
-		if (node.val < root.val) {
+	private TreeNode addRec(TreeNode node, int val) {
 
-			if (isEmpty(root.left)) {
-				root.left = node;
-				size++;
-			} else
-				return addToRightPosition(root.left, node);
+		if (node == null) {
+			size++;
+			return new TreeNode(val);
+		}
 
-		} else if (node.val > root.val) {
+		if (val < node.val)
+			node.left = addRec(node.left, val);
+		else if (val > node.val)
+			node.right = addRec(node.right, val);
 
-			if (isEmpty(root.right)) {
-				root.right = node;
-				size++;
-			} else
-				return addToRightPosition(root.right, node);
-		} else
-			return false;
-
-		return true;
+		return node;
 	}
 
 	public boolean isEmpty() {
