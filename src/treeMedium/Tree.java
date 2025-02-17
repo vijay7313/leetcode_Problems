@@ -103,7 +103,7 @@ public class Tree {
 
 	private void inOrderTraversal(TreeNode root, List<Integer> list) {
 
-		if (root == null)
+		if (isEmpty(root))
 			return;
 
 		inOrderTraversal(root.left, list);
