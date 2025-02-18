@@ -1,5 +1,7 @@
 package treeMedium;
 
+import java.util.List;
+
 public class BTreeMain {
 	public static void main(String[] args) {
 
@@ -9,6 +11,14 @@ public class BTreeMain {
 
 		for (int num : nums)
 			tree.add(num);
+
+		int height = tree.heightOfTree();
+
+		List<Integer> levelOrder = tree.levelOrderTraversal();
+
+		System.out.println(levelOrder);
+
+		System.out.println(height);
 
 	}
 }

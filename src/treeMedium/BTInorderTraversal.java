@@ -7,7 +7,7 @@ public class BTInorderTraversal {
 
 		int[] nums = { 3, 2, 5, 1, 9, 7, 11 };
 
-		Tree tree = new Tree();
+		BTree tree = new BTree();
 
 		for (int num : nums)
 			tree.add(num);
