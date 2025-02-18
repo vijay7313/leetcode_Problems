@@ -1,10 +1,5 @@
 package treeMedium;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-import treeMedium.BTree.TreeNode;
-
 public class BSTree {
 
 	private TreeNode root;

@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import treeMedium.BSTree.TreeNode;
-
 public class BTree {
 
 	private TreeNode root;
