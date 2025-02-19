@@ -5,22 +5,9 @@ import java.util.Queue;
 
 public class PopulatingNextRightPointersEachNode {
 
-	TreeNode previous;
-
-	public static void main(String[] args) {
-
-		PopulatingNextRightPointersEachNode tree = new PopulatingNextRightPointersEachNode();
-
-		int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
-
-		for (int num : nums)
-			tree.add(num);
-
-		TreeNode node = tree.connect(tree.root);
-
-	}
-
 	private TreeNode root;
+
+	private TreeNode previous;
 
 	public class TreeNode {
 
@@ -70,12 +57,17 @@ public class PopulatingNextRightPointersEachNode {
 		}
 	}
 
-	public TreeNode connect(TreeNode root) {
+	public TreeNode connect() {
+		return connect(root);
+	}
+
+	private TreeNode connect(TreeNode root) {
 
 		for (int level = 0; level < height(root); level++) {
 			previous = null;
 			levelOrder(root, level);
 		}
+
 		return root;
 	}
 
