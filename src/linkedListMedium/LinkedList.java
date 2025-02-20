@@ -310,4 +310,28 @@ public class LinkedList {
 
 	}
 
+	public void deleteMiddle() {
+
+		ListNode slow = head;
+
+		ListNode fast = head;
+
+		int count = 0;
+
+		while (fast != null && fast.next != null) {
+
+			if (count++ != 0)
+				slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		if (slow.next != null)
+			slow.next = slow.next.next;
+		else
+			head = null;
+
+		size--;
+
+	}
+
 }
