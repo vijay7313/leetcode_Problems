@@ -1,5 +1,8 @@
 package treeMedium;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BSTree {
 
 	private TreeNode root;
@@ -83,8 +86,33 @@ public class BSTree {
 		return node == null;
 	}
 
+	public boolean isLeaf(TreeNode node) {
+		return node.left == null && node.right == null;
+	}
+
 	public int size() {
 		return size;
+	}
+
+	public int kthSmallestElement(int k) {
+
+		List<Integer> list = new ArrayList<>(k);
+
+		kthSmallestElement(root, list);
+
+		return list.get(k - 1);
+	}
+
+	private void kthSmallestElement(TreeNode root, List<Integer> list) {
+
+		if (root != null) {
+
+			kthSmallestElement(root.left, list);
+
+			list.add(root.val);
+
+			kthSmallestElement(root.right, list);
+		}
 	}
 
 }
