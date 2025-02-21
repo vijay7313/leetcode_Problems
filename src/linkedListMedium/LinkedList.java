@@ -334,4 +334,29 @@ public class LinkedList {
 
 	}
 
+	public int cycleII() {
+		ListNode slower = head;
+
+		Set<ListNode> set = new HashSet<>();
+
+		while (slower != null) {
+
+			if (!set.contains(slower))
+				set.add(slower);
+			else
+				return slower.value;
+
+			slower = slower.next;
+
+		}
+		return -1;
+
+	}
+
+	public void cycle() {
+
+		getLastNode(head).next = head.next;
+
+	}
+
 }
