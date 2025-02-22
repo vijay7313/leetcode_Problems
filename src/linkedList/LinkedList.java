@@ -480,6 +480,23 @@ public class LinkedList {
 
 	}
 
+	public int convertBinaryToInteger() {
+
+		int i = size() - 1;
+
+		int result = 0;
+
+		while (head != null) {
+
+			result += head.value * (int) Math.pow(2, i--);
+
+			head = head.next;
+		}
+
+		return result;
+
+	}
+
 }
 
 class Node {
