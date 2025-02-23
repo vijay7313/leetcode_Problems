@@ -82,17 +82,18 @@ public class LinkedList {
 	}
 
 	public int getFirst() {
+
 		if (isEmpty())
 			return -1;
-
-		return first.value;
+		else
+			return first.value;
 	}
 
 	public int getLast() {
 		if (isEmpty())
 			return -1;
-
-		return last.value;
+		else
+			return last.value;
 	}
 
 	private ListNode getPreviousOfLastNode(ListNode head) {
