@@ -17,6 +17,10 @@ public class LinkedList {
 
 	private ListNode head;
 
+	private ListNode first;
+
+	private ListNode last;
+
 	private int size;
 
 	public void add(int value) {
@@ -28,11 +32,12 @@ public class LinkedList {
 		ListNode node = new ListNode(value);
 
 		if (isEmpty())
-			head = node;
+			first = head = node;
 		else {
 			node.next = head;
-			head = node;
+			first = head = node;
 		}
+
 		size++;
 
 	}
@@ -42,9 +47,9 @@ public class LinkedList {
 		ListNode node = new ListNode(value);
 
 		if (isEmpty())
-			head = node;
+			last = head = node;
 		else
-			getLastNode(head).next = node;
+			last = getLastNode(head).next = node;
 
 		size++;
 
@@ -55,7 +60,7 @@ public class LinkedList {
 		if (isEmpty())
 			throw new IllegalStateException();
 		else
-			head = head.next;
+			first = head = head.next;
 
 		size--;
 
@@ -70,10 +75,24 @@ public class LinkedList {
 			head = null;
 
 		else
-			getPreviousOfLastNode(head).next = null;
+			last = getPreviousOfLastNode(head).next = null;
 
 		size--;
 
+	}
+
+	public int getFirst() {
+		if (isEmpty())
+			return -1;
+
+		return first.value;
+	}
+
+	public int getLast() {
+		if (isEmpty())
+			return -1;
+
+		return last.value;
 	}
 
 	private ListNode getPreviousOfLastNode(ListNode head) {
