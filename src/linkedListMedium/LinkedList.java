@@ -379,4 +379,33 @@ public class LinkedList {
 
 	}
 
+	public ListNode deleteNodesPresentInArray(int[] nums) {
+
+		Set<Integer> set = new HashSet<>();
+
+		for (int num : nums)
+			set.add(num);
+
+		while (head != null && set.contains(head.value)) {
+			head = head.next;
+			size--;
+		}
+
+		ListNode current = head;
+		ListNode previous = null;
+
+		while (current != null) {
+
+			if (set.contains(current.value)) {
+				previous.next = current.next;
+				size--;
+			} else
+				previous = current;
+
+			current = current.next;
+		}
+		return head;
+
+	}
+
 }
