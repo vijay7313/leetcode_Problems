@@ -10,98 +10,107 @@ public class DesignLinkedList {
 
 	class ListNode {
 		private int val;
+		private ListNode previous;
 		private ListNode next;
 
 		public ListNode(int val) {
 			this.val = val;
+			this.previous = null;
 			this.next = null;
 		}
-	}
-
-	public DesignLinkedList() {
-
-	}
-
-	public int get(int index) {
-
-		ListNode current = head;
-
-		ListNode temp = current;
-
-		while (temp != null) {
-			System.out.println(temp.val);
-			temp = temp.next;
-		}
-
-		for (int i = 0; i <= index; i++) {
-
-			if (current == null)
-				break;
-			else if (i == index && current != null)
-				return current.val;
-
-			current = current.next;
-		}
-		return -1;
 	}
 
 	public void addAtHead(int val) {
 
 		ListNode node = new ListNode(val);
+
 		if (isEmpty())
 			head = tail = node;
 		else {
-			tail.next = node;
-			tail = node;
+			node.next = head;
+			head.previous = node;
+			head = node;
 		}
 		size++;
-
 	}
 
 	public void addAtTail(int val) {
 
 		ListNode node = new ListNode(val);
+
 		if (isEmpty())
 			head = tail = node;
-		tail.next = node;
-		tail = node;
+		else {
+			node.previous = tail;
+			tail.next = node;
+			tail = node;
+		}
+		size++;
+	}
+
+	public int get(int index) {
+
+		if (index < 0 || index >= size)
+			return -1;
+
+		ListNode current = head;
+
+		int i = 0;
+		while (i++ < index)
+			current = current.next;
+
+		return current.val;
 	}
 
 	public void addAtIndex(int index, int val) {
 
-		ListNode node = new ListNode(val);
-		if (index == size) {
-			tail.next = node;
-			tail = node;
-		} else if (index >= size)
+		if (index < 0 || size < index)
 			return;
-		else {
-			ListNode current = head;
 
-			for (int i = 1; i < index; i++)
-				current = current.next;
+		ListNode node = new ListNode(val);
 
-			ListNode next = current.next;
-			current.next = node;
-			node.next = next;
+		if (index == 0) {
+			addAtHead(val);
+			return;
 		}
+
+		if (size == index) {
+			addAtTail(val);
+			return;
+		}
+
+		ListNode current = head;
+
+		int i = 0;
+
+		while (i++ < (index - 1))
+			current = current.next;
+
+		ListNode next = current.next;
+
+		current.next = node;
+
+		node.previous = current;
+
+		node.next = next;
+
+		if (node.next == null)
+			tail = node;
+		else
+			next.previous = node;
 
 		size++;
 
 	}
 
-	public void deleteAtIndex(int index) {
-		if (index >= size)
-			return;
-		else {
-			ListNode current = head;
+	public void iterate() {
 
-			for (int i = 0; i < index; i++)
-				current = current.next;
+		ListNode current = head;
 
-			current.next = current.next.next;
+		while (current != null) {
+			System.out.print(current.val + " ");
+			current = current.next;
 		}
-		size--;
 	}
 
 	public boolean isEmpty() {
@@ -110,5 +119,53 @@ public class DesignLinkedList {
 
 	public int size() {
 		return size;
+	}
+
+	public void deleteAtIndex(int index) {
+
+		if (index < 0 || (size - 1) < index)
+			return;
+
+		if (index == 0 && size == 1) {
+			head = tail = null;
+			size--;
+			return;
+		}
+
+		if (index == 0 && 1 < size) {
+			head = head.next;
+			if (head != null) {
+				head.previous = null;
+			} else
+				tail = null;
+			size--;
+			return;
+		}
+
+		if (index == size - 1) {
+			tail = tail.previous;
+			tail.next = null;
+			size--;
+			return;
+		}
+
+		int i = 0;
+
+		ListNode current = head;
+
+		while (i++ < index) {
+			current = current.next;
+		}
+
+		ListNode previous = current.previous;
+		ListNode next = current.next;
+		previous.next = next;
+
+		if (next != null)
+			next.previous = previous;
+		else
+			tail = previous;
+
+		size--;
 	}
 }
