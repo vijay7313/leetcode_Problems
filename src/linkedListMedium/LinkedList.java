@@ -3,6 +3,7 @@ package linkedListMedium;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 public class LinkedList {
 
@@ -408,4 +409,39 @@ public class LinkedList {
 
 	}
 
+	public ListNode addTwoNumbersII(LinkedList list1, LinkedList list2) {
+
+		ListNode head1 = list1.head;
+		ListNode head2 = list2.head;
+
+		Stack<Integer> stackList1 = new Stack<>();
+		Stack<Integer> stackList2 = new Stack<>();
+
+		while (head1 != null) {
+			stackList1.add(head1.value);
+			head1 = head1.next;
+		}
+		while (head2 != null) {
+			stackList2.add(head2.value);
+			head2 = head2.next;
+		}
+
+		int reminder = 0;
+		ListNode newHead = null;
+
+		while (!stackList1.isEmpty() || !stackList2.isEmpty() || reminder != 0) {
+
+			int stackList1Value = !stackList1.isEmpty() ? stackList1.pop() : 0;
+			int stackList2Value = !stackList2.isEmpty() ? stackList2.pop() : 0;
+
+			int sum = stackList1Value + stackList2Value + reminder;
+			reminder = sum / 10;
+
+			ListNode node = new ListNode(sum % 10);
+
+			node.next = newHead;
+			newHead = node;
+		}
+		return newHead;
+	}
 }
