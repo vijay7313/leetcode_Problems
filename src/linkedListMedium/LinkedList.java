@@ -471,4 +471,37 @@ public class LinkedList {
 		}
 		return head;
 	}
+
+	public ListNode doubleANumberInListUsingRecursion() {
+
+		ListNode newHead = doubleANumberInListUsingRecursion(head);
+
+		int mainRem = head.value * 2 / 10;
+
+		if (mainRem > 0) {
+			ListNode node = new ListNode(mainRem);
+			node.next = newHead;
+			newHead = node;
+		}
+		return newHead;
+	}
+
+	private ListNode doubleANumberInListUsingRecursion(ListNode head) {
+
+		if (head == null)
+			return null;
+
+		int result = head.value * 2;
+
+		ListNode newHead = doubleANumberInListUsingRecursion(head.next);
+
+		int reminder = head.next != null ? head.next.value * 2 / 10 : 0;
+
+		ListNode node = new ListNode((result % 10) + reminder);
+
+		node.next = newHead;
+		newHead = node;
+
+		return newHead;
+	}
 }
