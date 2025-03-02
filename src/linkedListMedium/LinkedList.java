@@ -444,4 +444,31 @@ public class LinkedList {
 		}
 		return newHead;
 	}
+
+	public ListNode DoubleANumberInList() {
+
+		Stack<Integer> stack = new Stack<>();
+
+		while (head != null) {
+			stack.add(head.value);
+			head = head.next;
+		}
+
+		int reminder = 0;
+
+		while (!stack.isEmpty() || reminder != 0) {
+
+			int stackVal = !stack.isEmpty() ? stack.pop() : 0;
+
+			int result = (stackVal * 2) + reminder;
+
+			ListNode node = new ListNode(result % 10);
+
+			node.next = head;
+			head = node;
+
+			reminder = result / 10;
+		}
+		return head;
+	}
 }
