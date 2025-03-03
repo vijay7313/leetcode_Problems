@@ -14,13 +14,9 @@ public class DoubleANumberRepresentedAsList {
 			list.add(num);
 
 //		ListNode node = list.DoubleANumberInList();
-//
-//		int[] array = list.toArray(node);
-//
-//		System.out.println(Arrays.toString(array));
-		
+
 		ListNode node = list.doubleANumberInListUsingRecursion();
-		
+
 		int[] array = list.toArray(node);
 
 		System.out.println(Arrays.toString(array));
