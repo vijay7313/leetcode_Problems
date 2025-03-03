@@ -4,18 +4,16 @@ import java.util.Arrays;
 
 import linkedListMedium.LinkedList.ListNode;
 
-public class DoubleANumberRepresentedAsList {
+public class MergeNodesBetweenZeros {
 	public static void main(String[] args) {
-		int[] nums = { 1, 8, 9 };
+		int[] nums = { 0, 3, 1, 0, 4, 5, 2, 0 };
 
 		LinkedList list = new LinkedList();
 
 		for (int num : nums)
 			list.add(num);
 
-//		ListNode node = list.DoubleANumberInList();
-
-		ListNode node = list.doubleANumberInListUsingRecursion();
+		ListNode node = list.mergeNodesBetweenZeros();
 
 		int[] array = list.toArray(node);
 

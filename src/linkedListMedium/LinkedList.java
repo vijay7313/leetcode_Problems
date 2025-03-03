@@ -504,4 +504,29 @@ public class LinkedList {
 
 		return newHead;
 	}
+
+	public ListNode mergeNodesBetweenZeros() {
+
+		ListNode newNode = null;
+		ListNode newtail = null;
+		int sum = 0;
+
+		while (head != null) {
+
+			if (head.value == 0 && sum != 0) {
+
+				ListNode node = new ListNode(sum);
+				sum = 0;
+
+				if (newNode == null)
+					newNode = newtail = node;
+				else
+					newtail.next = node;
+				newtail = node;
+			}
+			sum += head.value;
+			head = head.next;
+		}
+		return newNode;
+	}
 }
