@@ -519,12 +519,12 @@ public class LinkedList {
 				sum = 0;
 
 				if (newNode == null)
-					newNode = newtail = node;
+					newNode = node;
 				else
 					newtail.next = node;
 				newtail = node;
-			}
-			sum += head.value;
+			} else
+				sum += head.value;
 			head = head.next;
 		}
 		return newNode;

@@ -1,7 +1,6 @@
 package linkedListMedium;
 
 import java.util.Arrays;
-
 import linkedListMedium.LinkedList.ListNode;
 
 public class MergeNodesBetweenZeros {
