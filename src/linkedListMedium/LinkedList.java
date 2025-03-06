@@ -8,11 +8,11 @@ import java.util.Stack;
 public class LinkedList {
 
 	public class ListNode {
-		private int value;
+		private int val;
 		private ListNode next;
 
-		public ListNode(int value) {
-			this.value = value;
+		public ListNode(int val) {
+			this.val = val;
 		}
 	}
 
@@ -87,14 +87,14 @@ public class LinkedList {
 		if (isEmpty())
 			return -1;
 		else
-			return first.value;
+			return first.val;
 	}
 
 	public int getLast() {
 		if (isEmpty())
 			return -1;
 		else
-			return last.value;
+			return last.val;
 	}
 
 	private ListNode getPreviousOfLastNode(ListNode head) {
@@ -128,7 +128,7 @@ public class LinkedList {
 
 		while (current != null) {
 
-			array[index++] = current.value;
+			array[index++] = current.val;
 
 			current = current.next;
 		}
@@ -148,7 +148,7 @@ public class LinkedList {
 
 		while (current != null) {
 
-			array[index++] = current.value;
+			array[index++] = current.val;
 
 			current = current.next;
 		}
@@ -193,8 +193,8 @@ public class LinkedList {
 
 		while (l1 != null || l2 != null || carry != 0) {
 
-			int l1Value = l1 != null ? l1.value : 0;
-			int l2Value = l2 != null ? l2.value : 0;
+			int l1Value = l1 != null ? l1.val : 0;
+			int l2Value = l2 != null ? l2.val : 0;
 
 			l1 = l1 != null ? l1.next : null;
 			l2 = l2 != null ? l2.next : null;
@@ -365,7 +365,7 @@ public class LinkedList {
 			if (!set.contains(slower))
 				set.add(slower);
 			else
-				return slower.value;
+				return slower.val;
 
 			slower = slower.next;
 
@@ -387,7 +387,7 @@ public class LinkedList {
 		for (int num : nums)
 			set.add(num);
 
-		while (head != null && set.contains(head.value)) {
+		while (head != null && set.contains(head.val)) {
 			head = head.next;
 			size--;
 		}
@@ -397,7 +397,7 @@ public class LinkedList {
 
 		while (current != null) {
 
-			if (set.contains(current.value)) {
+			if (set.contains(current.val)) {
 				previous.next = current.next;
 				size--;
 			} else
@@ -418,11 +418,11 @@ public class LinkedList {
 		Stack<Integer> stackList2 = new Stack<>();
 
 		while (head1 != null) {
-			stackList1.add(head1.value);
+			stackList1.add(head1.val);
 			head1 = head1.next;
 		}
 		while (head2 != null) {
-			stackList2.add(head2.value);
+			stackList2.add(head2.val);
 			head2 = head2.next;
 		}
 
@@ -450,7 +450,7 @@ public class LinkedList {
 		Stack<Integer> stack = new Stack<>();
 
 		while (head != null) {
-			stack.add(head.value);
+			stack.add(head.val);
 			head = head.next;
 		}
 
@@ -476,7 +476,7 @@ public class LinkedList {
 
 		ListNode newHead = doubleANumberInListUsingRecursion(head);
 
-		int mainRem = head.value * 2 / 10;
+		int mainRem = head.val * 2 / 10;
 
 		if (mainRem > 0) {
 			ListNode node = new ListNode(mainRem);
@@ -491,11 +491,11 @@ public class LinkedList {
 		if (head == null)
 			return null;
 
-		int result = head.value * 2;
+		int result = head.val * 2;
 
 		ListNode newHead = doubleANumberInListUsingRecursion(head.next);
 
-		int reminder = head.next != null ? head.next.value * 2 / 10 : 0;
+		int reminder = head.next != null ? head.next.val * 2 / 10 : 0;
 
 		ListNode node = new ListNode((result % 10) + reminder);
 
@@ -513,7 +513,7 @@ public class LinkedList {
 
 		while (head != null) {
 
-			if (head.value == 0 && sum != 0) {
+			if (head.val == 0 && sum != 0) {
 
 				ListNode node = new ListNode(sum);
 				sum = 0;
@@ -524,7 +524,7 @@ public class LinkedList {
 					newtail.next = node;
 				newtail = node;
 			} else
-				sum += head.value;
+				sum += head.val;
 			head = head.next;
 		}
 		return newNode;
