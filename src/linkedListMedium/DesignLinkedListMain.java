@@ -1,7 +1,5 @@
 package linkedListMedium;
 
-import linkedListMedium.DesignLinkedList;
-
 public class DesignLinkedListMain {
 	public static void main(String[] args) {
 
