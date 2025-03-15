@@ -19,17 +19,7 @@ public class ReverseWordsInString {
 
 		StringBuffer str = new StringBuffer();
 
-		int start = 0;
-
-		int end = s.length() - 1;
-
-		while (start <= end)
-			if (s.charAt(end) == ' ')
-				end--;
-			else
-				break;
-
-		for (int i = end; i >= 0; i--)
+		for (int i = s.length() - 1; i >= 0; i--)
 
 			if (s.charAt(i) != ' ')
 				stack.push(s.charAt(i));
