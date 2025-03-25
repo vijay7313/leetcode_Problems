@@ -16,10 +16,10 @@ public class RemovingStarsFromString {
 		Stack<Character> stack = new Stack<>();
 
 		for (char ch : s.toCharArray())
-			if (ch == '*')
-				stack.pop();
-			else
+			if (ch != '*')
 				stack.push(ch);
+			else
+				stack.pop();
 
 		StringBuilder str = new StringBuilder();
 
